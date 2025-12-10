@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.exception.ProductNotFoundException;
+import com.example.model.Customer;
 import com.example.model.Product;
 import com.example.repository.ProductRepository;
 import org.slf4j.Logger;
@@ -75,5 +76,9 @@ public class ProductService {
 
     public List<Product> searchProducts(String keyword) {
         return productRepository.findByNameContaining(keyword);
+    }
+
+    public java.util.Optional<Product> findBySku(String sku) {
+        return productRepository.findBySku(sku);
     }
 }

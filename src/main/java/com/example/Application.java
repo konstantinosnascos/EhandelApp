@@ -29,6 +29,8 @@ public class Application {
     private final PaymentService paymentService = new PaymentService(paymentRepository);
     private final OrderService orderService = new OrderService(orderRepository, inventoryService, paymentService);
     private final CartService cartService = new CartService(inventoryService);
+    private final CSVImportService csvImportService =
+            new CSVImportService(orderService, productService, customerService, inventoryService);
 
     // Menu Handler
     private final MenuHandler menuHandler;
@@ -46,7 +48,12 @@ public class Application {
                 customerService,
                 cartService,
                 orderService,
-                inventoryService
+                inventoryService,
+                csvImportService,
+                productRepository,
+                customerRepository,
+                orderRepository,
+                inventoryRepository
         );
     }
 
@@ -83,8 +90,16 @@ public class Application {
             Customer c4 = customerService.createCustomer("johan.berg@email.com", "Johan Berg");
             Customer c5 = customerService.createCustomer("linda.nilsson@email.com", "Linda Nilsson");
 
-            logger.info("Testdata inlagd: 10 produkter, 5 kunder");
-            System.out.println("Testdata inlagd: 10 produkter, 5 kunder");
+            logger.info("Testdata Small scenario startat: 10 produkter, 5 kunder");
+            System.out.println("\n========================================");
+            System.out.println("Testdata inlagd: 10 produkter, 5 kunder");            System.out.println("========================================");
+            System.out.println("Scenario: Small");
+            System.out.println("Produkter: 10");
+            System.out.println("Kunder: 5");
+            System.out.println("========================================");
+            System.out.println("\nTips: Gå till Systemhantering för att importera");
+            System.out.println("      Medium eller Large scenarios från CSV.");
+            System.out.println("========================================\n");
 
         } catch (Exception e) {
             System.out.println("Ett fel uppstod vid inläsning av testdata: " + e.getMessage());

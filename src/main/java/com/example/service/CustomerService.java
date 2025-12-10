@@ -53,4 +53,15 @@ public class CustomerService {
     private boolean isValidEmail(String email) {
         return email != null && email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
     }
+
+    public java.util.Optional<Customer> findByEmail(String email) {
+        return customerRepository.findByEmail(email);
+    }
+
+    public Customer findOrCreate(String email, String name) {
+        return customerRepository.findByEmail(email)
+                .orElseGet(() -> {
+                    return createCustomer(email, name);
+                });
+    }
 }

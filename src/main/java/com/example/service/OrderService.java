@@ -6,6 +6,7 @@ import com.example.repository.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,21 @@ public class OrderService {
         this.orderRepository = orderRepository;
         this.inventoryService = inventoryService;
         this.paymentService = paymentService;
+    }
+
+    public Order createImportedOrder(Order imported) {
+        Order saved = orderRepository.save(imported);
+
+        if (saved.getStatus() == OrderStatus.PAID) {
+            for (OrderItem item : saved.getItems()) {
+                inventoryService.reserveStock(item.getProduct(), item.getQuantity());
+            }
+            logger.info("Importerad order {} sparad som PAID – lager reducerat.", saved.getId());
+        } else {
+            logger.info("Importerad order {} sparad med status {}.", saved.getId(), saved.getStatus());
+        }
+
+        return saved;
     }
 
     public Order createOrder(Customer customer, List<OrderItem> items) {

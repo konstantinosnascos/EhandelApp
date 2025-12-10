@@ -1,6 +1,7 @@
 package com.example.menu;
 
 import com.example.helper.InputHelper;
+import com.example.repository.*;
 import com.example.service.*;
 
 import java.util.Scanner;
@@ -13,13 +14,19 @@ public class MenuHandler {
     private final CartMenu cartMenu;
     private final OrderMenu orderMenu;
     private final ReportMenu reportMenu;
+    private final SystemMenu systemMenu;
 
     public MenuHandler(Scanner scanner,
                        ProductService productService,
                        CustomerService customerService,
                        CartService cartService,
                        OrderService orderService,
-                       InventoryService inventoryService) {
+                       InventoryService inventoryService,
+                       CSVImportService csvImportService,
+                       ProductRepository productRepository,
+                       CustomerRepository customerRepository,
+                       OrderRepository orderRepository,
+                       InventoryRepository inventoryRepository) {
 
         this.input = new InputHelper(scanner);
         this.productMenu = new ProductMenu(input, productService);
@@ -27,6 +34,8 @@ public class MenuHandler {
         this.cartMenu = new CartMenu(input, cartService, productService, customerService);
         this.orderMenu = new OrderMenu(input, orderService, cartService, cartMenu);
         this.reportMenu = new ReportMenu(input, orderService, inventoryService);
+        this.systemMenu = new SystemMenu(input, csvImportService, productRepository,
+                customerRepository, orderRepository, inventoryRepository);
     }
 
     public void runMainMenu() {
@@ -40,7 +49,8 @@ public class MenuHandler {
                 case 3 -> cartMenu.run();
                 case 4 -> orderMenu.run();
                 case 5 -> reportMenu.run();
-                case 6 -> running = false;
+                case 6 -> systemMenu.run();
+                case 7 -> running = false;
                 default -> System.out.println("Ogiltigt val.");
             }
         }
@@ -56,6 +66,7 @@ public class MenuHandler {
         System.out.println("3. Kundvagn");
         System.out.println("4. Orderhantering");
         System.out.println("5. Rapporter");
+        System.out.println("6. Systemhantering");
         System.out.println("6. Avsluta");
         System.out.println("========================================");
     }
