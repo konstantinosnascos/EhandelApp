@@ -1,0 +1,6 @@
+orderNumber,customerEmail,status,createdAt,items (items-kolumnen: sku:qty|sku:qty …)
+ORD-S-1,alice@example.com,PAID,2025-01-01T10:05,SKU1001:2|SKU1002:1
+ORD-S-2,bob@example.com,PAID,2025-01-02T14:22,SKU1003:1
+ORD-S-3,carla@example.com,CANCELLED,2025-01-03T09:10,SKU1004:1|SKU1005:3
+ORD-S-4,david@example.com,PAID,2025-01-04T17:45,SKU1006:1|SKU1001:1|SKU1007:1
+ORD-S-5,erik@example.com,PAID,2025-01-05T11:30,SKU1009:2

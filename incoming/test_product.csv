@@ -1,0 +1,11 @@
+sku,name,description,price,stock,categories
+SKU1001,USB-Kabel 1m,Standard USB-A/USB-C,59.00,25,Kablar;Tillbehör
+SKU1002,Gaming-Mus X9,RGB 8200 DPI,399.00,10,Tillbehör;Gaming
+SKU1003,Laptop 14” Lite,8 GB/256 GB SSD,6990.00,7,Datorer
+SKU1004,Laptop 15” Pro,16 GB/512 GB SSD,11990.00,5,Datorer
+SKU1005,HDMI-Kabel 2m,4K 60 Hz,89.00,40,Kablar;Tillbehör
+SKU1006,Trådlöst Tangentbord,ISO SE,499.00,15,Tillbehör
+SKU1007,Gaming-Headset H1,7.1 Surround,799.00,12,Tillbehör;Gaming
+SKU1008,Webbkamera 1080p,Autofokus,599.00,13,Tillbehör
+SKU1009,SSD 1 TB NVMe,3500 MB/s,1499.00,20,Komponenter
+SKU1010,Powerbank 10 000 mAh,USB-C PD,299.00,30,Tillbehör

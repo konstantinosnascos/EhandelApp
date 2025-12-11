@@ -67,7 +67,7 @@ public class MenuHandler {
         System.out.println("4. Orderhantering");
         System.out.println("5. Rapporter");
         System.out.println("6. Systemhantering");
-        System.out.println("6. Avsluta");
+        System.out.println("7. Avsluta");
         System.out.println("========================================");
     }
 }
